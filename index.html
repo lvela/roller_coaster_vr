@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>Skyfall Tower Drop – VR Roller Coaster</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #0b0f14; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    canvas { display: block; }
+    #overlay {
+      position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(ellipse at center, rgba(10,14,20,0.82), rgba(10,14,20,0.96));
+      color: #fff; z-index: 10; padding: 16px; box-sizing: border-box;
+    }
+    #overlay.hidden { display: none; }
+    .card { max-width: 520px; text-align: center; }
+    h1 { margin: 0 0 6px; font-size: clamp(28px, 6vw, 46px); letter-spacing: 0.04em; color: #ff7a4a; }
+    p { color: #c8d2dc; line-height: 1.5; margin: 8px 0; }
+    .buttons { display: flex; flex-direction: column; gap: 12px; align-items: center; margin-top: 22px; }
+    #vr-slot { position: relative; height: 52px; width: 260px; }
+    /* VRButton positions itself absolutely; pin it inside the slot */
+    #vr-slot > * { position: absolute !important; left: 0 !important; bottom: 0 !important; width: 260px !important; height: 52px; font-size: 16px !important; }
+    #desktop-btn {
+      width: 260px; height: 46px; border-radius: 6px; border: 1px solid #fff; background: transparent; color: #fff;
+      font-size: 15px; cursor: pointer;
+    }
+    #desktop-btn:disabled { opacity: 0.4; cursor: default; }
+    #status { color: #ffcf4a; min-height: 1.4em; }
+    small { color: #8b98a5; display: block; margin-top: 18px; }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="overlay">
+    <div class="card">
+      <h1>SKYFALL TOWER DROP</h1>
+      <p>Ride through the city, ride a cable lift 490&nbsp;m straight up the side of a skyscraper, hang over the edge&hellip; and drop.</p>
+      <p id="status">Loading…</p>
+      <div class="buttons">
+        <div id="vr-slot"></div>
+        <button id="desktop-btn" disabled>Ride on this screen</button>
+      </div>
+      <small>Quest: press ENTER VR, sit down, then pull the trigger to dispatch the train.<br>
+        Desktop: drag to look around, SPACE to dispatch, hold F to fast-forward.</small>
+    </div>
+  </div>
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
